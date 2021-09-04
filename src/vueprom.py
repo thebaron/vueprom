@@ -139,10 +139,9 @@ def create_app(devices):
     vue = PyEmVue()
 
     info(f'Launching first poll.')
-    poll_emporia(vue, True, devices, 60, )
-    # poller_thread = threading.Timer(1, poll_emporia, kwargs={"vue":vue, "retry_login":True, "devices":devices, "poll_interval":60,} )
-    # poller_thread.start()
-    # atexit.register(handle_exit)
+    poller_thread = threading.Timer(1, poll_emporia, kwargs={"vue":vue, "retry_login":True, "devices":devices, "poll_interval":60,} )
+    poller_thread.start()
+    atexit.register(handle_exit)
     return app
 
 
